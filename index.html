@@ -6,14 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <style>
+        .main-container {
+            margin: auto;
+            display: flex;
+            /* flex-direction: ; */
+            max-width: 1200px;
+            justify-content: space-between;
+        }
+
+        .control-container {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .control-title {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .control-value {
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .control {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Etch The Sketch</h1>
-    <input type="range" class="value-slider" min="1" max="10" value="1">
-    <div class="container">
-    </div>
-    <script src="./script.js"></script>
+    <nav>
+        <h1>Etch-A-Sketch</h1>
+    </nav>
+
+    <section class="main-container">
+        <section class="control-container">
+            <div class="control rainbow-control">
+                <div class="control-title">Rainbow Mode</div>
+                <div class="control-value rainbow-mode-switch">Off</div>
+            </div>
+            <div class="control darken-control">
+                <div class="control-title">Darken Mode</div>
+                <div class="control-value darken-mode-switch">Off</div>
+            </div>
+            <div class="control box-control">
+                <div class="control-title">Blocks</div>
+                <span class="blocks-number control-value">1x1</span>
+                <input type="range" class="value-slider" min="1" max="10" value="1">
+            </div>
+
+        </section>
+
+        <div class="container">
+        </div>
+    </section>
 </body>
+<script src="./script.js"></script>
 
 </html>
