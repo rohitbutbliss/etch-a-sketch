@@ -1,18 +1,19 @@
 const valueSlider = document.querySelector(".value-slider");
+const colorSwitch = document.querySelector(".color-switch");
 const rainbowModeSwitch = document.querySelector(".rainbow-mode-switch");
 const darkenModeSwitch = document.querySelector(".darken-mode-switch");
 
-const numberOfBoxes = [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100];
-const gapBetweenBoxes = [0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5];
-const borderRadius = [0, 40, 35, 30, 25, 20, 20, 15, 15, 15, 10];
-
-let defaultColor = "2b9348";
+let defaultColor = "#2b9348";
 let rainbowModeSwitchValue = false;
 let darkenModeSwitchValue = false;
 
 valueSlider.addEventListener('input', function (e) {
     changeControlData('slider', e.target);
     createBoxes(e.target.value);
+});
+
+colorSwitch.addEventListener('input', function (e) {
+    defaultColor = e.target.value;
 });
 
 rainbowModeSwitch.addEventListener('click', function (e) {
@@ -52,13 +53,11 @@ function changeControlData(controlName, eventTarget) {
 }
 
 function createBoxes(numberOfBoxesInRow) {
-    const totalBoxes = numberOfBoxes[numberOfBoxesInRow];
-    const gapInBetween = gapBetweenBoxes[numberOfBoxesInRow];
-    const borderRadiusOfBox = borderRadius[numberOfBoxesInRow];
+    const totalBoxes = numberOfBoxesInRow ** 2;
+
     const mainContainerDiv = document.querySelector(".container");
 
     mainContainerDiv.innerHTML = "";
-    mainContainerDiv.style.gap = `${gapInBetween}px`;
 
     for (let i = 0; i < totalBoxes; i++) {
         const box = document.createElement("div");
@@ -69,8 +68,7 @@ function createBoxes(numberOfBoxesInRow) {
         overlay.classList.add("overlay");
         box.classList.add("box");
 
-        wrapper.style.width = `calc(100%/${numberOfBoxesInRow} - ${gapInBetween * (numberOfBoxesInRow - 1) / numberOfBoxesInRow}px)`;
-        wrapper.style.borderRadius = `${borderRadiusOfBox}px`;
+        wrapper.style.width = `calc(100%/${numberOfBoxesInRow} - ${1 * (numberOfBoxesInRow - 1) / numberOfBoxesInRow}px`;
         overlay.style.opacity = 0;
 
         box.addEventListener("mouseover", changeColorOfBox);
@@ -86,7 +84,7 @@ function changeColorOfBox(e) {
         e.target.previousElementSibling.style.opacity = parseFloat(e.target.previousElementSibling.style.opacity) + 0.1;
 
     if (!rainbowModeSwitchValue) {
-        e.target.style.backgroundColor = `#${defaultColor}`;
+        e.target.style.backgroundColor = `${defaultColor}`;
         return;
     }
     const redValue = Math.floor(Math.random() * 256);

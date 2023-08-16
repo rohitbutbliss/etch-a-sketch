@@ -10,6 +10,7 @@ body {
   background-color: #aacc00;
   color: #007f5f;
   padding: 20px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -18,20 +19,110 @@ h1 {
   font-size: 100px;
 }
 
-.container {
+.main-container {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  max-width: 1200px;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.control-container {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 20px;
-  flex-wrap: wrap;
-  height: 500px;
+}
+
+.control-title {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.control-value {
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.color-switch {
+  overflow: hidden;
+  width: 50px;
   aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 3px solid #007f5f;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+input::-webkit-color-swatch-wrapper {
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+input::-webkit-color-swatch {
+  border: none;
+}
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1px;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
-  max-width: 600px;
+  max-width: 50%;
+  width: 50%;
+  aspect-ratio: 1/1;
+  background-color: black;
 }
 
 .box {
-  background-color: #d4d700;
+  background-color: white;
   width: 100%;
   height: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .wrapper {
