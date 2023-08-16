@@ -149,4 +149,4 @@ function changeColorOfBox(e) {
     e.target.style.backgroundColor = `rgb(${redValue},${greenValue},${blueValue})`;
 }
 
-createBoxes(1);
+createBoxes(25);
