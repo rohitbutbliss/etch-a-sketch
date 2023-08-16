@@ -2,14 +2,31 @@ const valueSlider = document.querySelector(".value-slider");
 const colorSwitch = document.querySelector(".color-switch");
 const rainbowModeSwitch = document.querySelector(".rainbow-mode-switch");
 const darkenModeSwitch = document.querySelector(".darken-mode-switch");
+const fillModeSwitch = document.querySelector(".fill-mode-switch");
+const eraseModeSwitch = document.querySelector(".erase-mode-switch");
 
 let defaultColor = "#2b9348";
 let rainbowModeSwitchValue = false;
 let darkenModeSwitchValue = false;
+let fillModeSwitchValue = true;
+let eraseModeSwitchValue = false;
 
 valueSlider.addEventListener('input', function (e) {
     changeControlData('slider', e.target);
     createBoxes(e.target.value);
+});
+
+document.addEventListener('keypress', function (e) {
+    if (e.key === 'f') {
+        turnTheSwitch('fill');
+        if (fillModeSwitchValue && eraseModeSwitchValue) turnTheSwitch('erase');
+    }
+    else if (e.key === 'd') turnTheSwitch('darken');
+    else if (e.key === 'r') turnTheSwitch('rainbow');
+    else if (e.key === 'e') {
+        turnTheSwitch('erase');
+        if (eraseModeSwitchValue && fillModeSwitchValue) turnTheSwitch('fill');
+    }
 });
 
 colorSwitch.addEventListener('input', function (e) {
@@ -22,6 +39,16 @@ rainbowModeSwitch.addEventListener('click', function (e) {
 
 darkenModeSwitch.addEventListener('click', function () {
     turnTheSwitch('darken');
+});
+
+fillModeSwitch.addEventListener('click', function (e) {
+    turnTheSwitch('fill');
+    if (fillModeSwitchValue && eraseModeSwitchValue) turnTheSwitch('erase');
+});
+
+eraseModeSwitch.addEventListener('click', function (e) {
+    turnTheSwitch('erase');
+    if (eraseModeSwitchValue && fillModeSwitchValue) turnTheSwitch('fill');
 });
 
 function turnTheSwitch(switchName) {
@@ -42,6 +69,26 @@ function turnTheSwitch(switchName) {
             darkenModeSwitch.innerText = 'Off';
         }
         darkenModeSwitchValue = !darkenModeSwitchValue;
+    }
+    else if (switchName === 'fill') {
+        if (!fillModeSwitchValue) {
+            fillModeSwitch.innerText = 'On';
+        }
+        else {
+            fillModeSwitch.innerText = 'Off';
+        }
+
+        fillModeSwitchValue = !fillModeSwitchValue;
+    }
+    else if (switchName === 'erase') {
+        if (!eraseModeSwitchValue) {
+            eraseModeSwitch.innerText = 'On';
+        }
+        else {
+            eraseModeSwitch.innerText = 'Off';
+        }
+
+        eraseModeSwitchValue = !eraseModeSwitchValue;
     }
 }
 
@@ -80,6 +127,12 @@ function createBoxes(numberOfBoxesInRow) {
 }
 
 function changeColorOfBox(e) {
+    if (eraseModeSwitchValue) {
+        e.target.style.backgroundColor = "white";
+        return;
+    }
+    if (!fillModeSwitchValue) return;
+
     if (darkenModeSwitchValue)
         e.target.previousElementSibling.style.opacity = parseFloat(e.target.previousElementSibling.style.opacity) + 0.1;
 

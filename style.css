@@ -7,6 +7,8 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   background-color: #aacc00;
   color: #007f5f;
   padding: 20px;
@@ -20,6 +22,7 @@ h1 {
 }
 
 .main-container {
+  height: 100%;
   margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,12 +47,12 @@ h1 {
 }
 
 .control-title {
-  font-size: 50px;
+  font-size: 35px;
   font-weight: bold;
 }
 
 .control-value {
-  font-size: 35px;
+  font-size: 24px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -66,7 +69,7 @@ h1 {
 
 .color-switch {
   overflow: hidden;
-  width: 50px;
+  width: 24px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   display: -webkit-box;
