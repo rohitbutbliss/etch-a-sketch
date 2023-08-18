@@ -115,7 +115,7 @@ function createBoxes(numberOfBoxesInRow) {
         overlay.classList.add("overlay");
         box.classList.add("box");
 
-        wrapper.style.width = `calc(100%/${numberOfBoxesInRow} - ${1 * (numberOfBoxesInRow - 1) / numberOfBoxesInRow}px`;
+        wrapper.style.width = `calc(100%/${numberOfBoxesInRow}`;
         overlay.style.opacity = 0;
 
         box.addEventListener("mouseover", changeColorOfBox);
@@ -140,6 +140,7 @@ function changeColorOfBox(e) {
         e.target.style.backgroundColor = `${defaultColor}`;
         return;
     }
+
     const redValue = Math.floor(Math.random() * 256);
     const greenValue = Math.floor(Math.random() * 256);
     const blueValue = Math.floor(Math.random() * 256);

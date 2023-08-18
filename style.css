@@ -106,7 +106,7 @@ input::-webkit-color-swatch {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 1px;
+  /* gap: 1px; */
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-flex: 1;
@@ -115,13 +115,14 @@ input::-webkit-color-swatch {
   max-width: 50%;
   width: 50%;
   aspect-ratio: 1/1;
-  background-color: black;
+  /* background-color: black; */
 }
 
 .box {
   background-color: white;
   width: 100%;
   height: 100%;
+  border: 0.5px solid black;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -ms-flex-negative: 0;
